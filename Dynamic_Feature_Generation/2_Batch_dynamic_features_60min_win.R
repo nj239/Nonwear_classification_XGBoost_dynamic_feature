@@ -123,13 +123,12 @@ Dynamic_feature<-function(dt){
   return(fea_table_final)
 }
 
-# Dynamic_feature(read.csv("T_1A_1_035_9_14.csv"))
 
 library(future)
 plan(multisession(workers=6))
 
 
-files_path<-"D:/OneDrive - The Pennsylvania State University/Off_wrist_WFHN/LEEF_1/Train/"
+files_path<-"file_path/Train/"
 
 all_train_files<-list.files(files_path)
 
