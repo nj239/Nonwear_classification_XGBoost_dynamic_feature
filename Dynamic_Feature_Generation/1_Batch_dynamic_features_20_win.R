@@ -128,26 +128,26 @@ Dynamic_feature<-function(dt){
   return(fea_table_final)
 }
 
-# Dynamic_feature(read.csv("T_1A_1_035_9_14.csv"))
+
 
 library(future)
 plan(multisession(workers=6))
 
 
-files_path<-"D:/OneDrive - The Pennsylvania State University/Off_wrist_WFHN/TOMO_1/Train/"
+files_path<-"file_paths/Train/"
 
 all_train_files<-list.files(files_path)
 
 for(f in (all_train_files)){
   file_path<-paste0(files_path,f)
-  if(file.exists(paste0("D:/OneDrive - The Pennsylvania State University/Off_wrist_WFHN/TOMO_1/dynamic_features/","dynamic_features_20_",f))){
-    print(paste0("D:/OneDrive - The Pennsylvania State University/Off_wrist_WFHN/TOMO_1/dynamic_features/","dynamic_features_20_",f," exist, skipped"))
+  if(file.exists(paste0("file_path/dynamic_features/","dynamic_features_20_",f))){
+    print(paste0("file_path/dynamic_features/","dynamic_features_20_",f," exist, skipped"))
     next
   }
   print(file_path)
   future({
     result<-Dynamic_feature(read.csv(file_path))
-    write.csv(result,paste0("D:/OneDrive - The Pennsylvania State University/Off_wrist_WFHN/TOMO_1/dynamic_features/","dynamic_features_20_",f))
+    write.csv(result,paste0("file_path/dynamic_features/","dynamic_features_20_",f))
   })
   
 }
